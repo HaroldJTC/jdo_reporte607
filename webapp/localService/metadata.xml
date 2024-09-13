@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="xJDOxSD_R_607_QUERY_CDS" xml:lang="es" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <EntityType Name="xJDOxSD_R_607_QUERYType" sap:label="Query de reporte 607" sap:semantics="aggregate" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" sap:filterable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="TotaledProperties" Type="Edm.String" sap:aggregation-role="totaled-properties-list" sap:is-annotation="true" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="belnr" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:label="Nº documento" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="blart" Type="Edm.String" MaxLength="2" sap:aggregation-role="dimension" sap:label="Clase de Documento" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="budat" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:text="budat_T" sap:label="Fecha" sap:creatable="false" sap:updatable="false" sap:semantics="yearmonthday"/>
+                <Property Name="budat_T" Type="Edm.String" MaxLength="10" sap:label="Fecha (Descripción)" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+                <Property Name="bukrs" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:label="Sociedad" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="cod_deu" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:label="Código Deudor" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="dia" Type="Edm.String" MaxLength="2" sap:aggregation-role="dimension" sap:label="Día" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="doc_vta" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:label="Documento SD" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="moneda" Type="Edm.String" MaxLength="5" sap:aggregation-role="dimension" sap:label="Moneda" sap:creatable="false" sap:updatable="false" sap:value-list="standard" sap:semantics="currency-code"/>
+                <Property Name="NFC" Type="Edm.String" MaxLength="18" sap:aggregation-role="dimension" sap:label="NCF" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="NFC_MODO" Type="Edm.String" MaxLength="18" sap:aggregation-role="dimension" sap:label="NCF Modificado" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="rnc_ced" Type="Edm.String" MaxLength="20" sap:aggregation-role="dimension" sap:label="RNC y/o Ced" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="tipo" Type="Edm.String" MaxLength="1" sap:aggregation-role="dimension" sap:label="Tipo" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="tipo_ing" Type="Edm.String" MaxLength="3" sap:aggregation-role="dimension" sap:label="Tipo Ingreso" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="moneda_bis" Type="Edm.String" MaxLength="5" sap:aggregation-role="dimension" sap:label="Moneda itbis" sap:creatable="false" sap:updatable="false" sap:value-list="standard" sap:semantics="currency-code"/>
+                <Property Name="prec_doc_value" Type="Edm.Decimal" Precision="42" Scale="2" sap:aggregation-role="measure" sap:creatable="false" sap:filterable="false" sap:text="prec_doc_value_F" sap:updatable="false" sap:label="Precio"/>
+                <Property Name="prec_doc_value_F" Type="Edm.String" MaxLength="60" sap:label="Precio (Formateado)" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+                <Property Name="itbis_value" Type="Edm.Decimal" Precision="42" Scale="2" sap:aggregation-role="measure" sap:creatable="false" sap:filterable="false" sap:text="itbis_value_F" sap:updatable="false" sap:label="Precio ITBIS"/>
+                <Property Name="itbis_value_F" Type="Edm.String" MaxLength="60" sap:label="Precio ITBIS (Formateado)" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="moneda" sap:label="Moneda (Datos maestros)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="moneda_ID"/>
+                </Key>
+                <Property Name="moneda_ID" Type="Edm.String" Nullable="false" MaxLength="5" sap:text="monedaText" sap:label="Moneda" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="monedaText" Type="Edm.String" sap:label="Moneda (Descripción)" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="monedaResult" sap:label="Moneda (Datos contabilizados)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="moneda"/>
+                </Key>
+                <Property Name="moneda" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Moneda" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="belnr" Type="Edm.String" MaxLength="10" sap:label="Nº documento" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="blart" Type="Edm.String" MaxLength="2" sap:label="Clase de Documento" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="budat" Type="Edm.String" MaxLength="10" sap:text="budat_T" sap:label="Fecha" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="budat_T" Type="Edm.String" sap:label="Fecha (Descripción)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="bukrs" Type="Edm.String" MaxLength="4" sap:label="Sociedad" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="cod_deu" Type="Edm.String" MaxLength="10" sap:label="Código Deudor" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="dia" Type="Edm.String" MaxLength="2" sap:label="Día" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="doc_vta" Type="Edm.String" MaxLength="10" sap:label="Documento SD" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="NFC" Type="Edm.String" MaxLength="18" sap:label="NCF" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="NFC_MODO" Type="Edm.String" MaxLength="18" sap:label="NCF Modificado" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="rnc_ced" Type="Edm.String" MaxLength="20" sap:label="RNC y/o Ced" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="tipo" Type="Edm.String" MaxLength="1" sap:label="Tipo" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="tipo_ing" Type="Edm.String" MaxLength="3" sap:label="Tipo Ingreso" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="moneda_bis" Type="Edm.String" MaxLength="5" sap:label="Moneda itbis" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="moneda_bis" sap:label="Moneda itbis (Datos maestros)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="moneda_bis_ID"/>
+                </Key>
+                <Property Name="moneda_bis_ID" Type="Edm.String" Nullable="false" MaxLength="5" sap:text="moneda_bisText" sap:label="Moneda itbis" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="moneda_bisText" Type="Edm.String" sap:label="Moneda itbis (Descripción)" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="moneda_bisResult" sap:label="Moneda itbis (Datos contabilizados)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="moneda_bis"/>
+                </Key>
+                <Property Name="moneda_bis" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Moneda itbis" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="belnr" Type="Edm.String" MaxLength="10" sap:label="Nº documento" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="blart" Type="Edm.String" MaxLength="2" sap:label="Clase de Documento" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="budat" Type="Edm.String" MaxLength="10" sap:text="budat_T" sap:label="Fecha" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="budat_T" Type="Edm.String" sap:label="Fecha (Descripción)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="bukrs" Type="Edm.String" MaxLength="4" sap:label="Sociedad" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="cod_deu" Type="Edm.String" MaxLength="10" sap:label="Código Deudor" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="dia" Type="Edm.String" MaxLength="2" sap:label="Día" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="doc_vta" Type="Edm.String" MaxLength="10" sap:label="Documento SD" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="moneda" Type="Edm.String" MaxLength="5" sap:label="Moneda" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="NFC" Type="Edm.String" MaxLength="18" sap:label="NCF" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="NFC_MODO" Type="Edm.String" MaxLength="18" sap:label="NCF Modificado" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="rnc_ced" Type="Edm.String" MaxLength="20" sap:label="RNC y/o Ced" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="tipo" Type="Edm.String" MaxLength="1" sap:label="Tipo" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="tipo_ing" Type="Edm.String" MaxLength="3" sap:label="Tipo Ingreso" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="ODataQueryAdditionalMetadata" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ODataQueryMetadata"/>
+                </Key>
+                <Property Name="ODataQueryMetadata" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ODataQueryMetadataValue_Current" Type="Edm.String" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ODataQueryMetadataValueAtDefine" Type="Edm.String" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityContainer Name="xJDOxSD_R_607_QUERY_CDS_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="xJDOxSD_R_607_QUERY" EntityType="xJDOxSD_R_607_QUERY_CDS.xJDOxSD_R_607_QUERYType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="moneda" EntityType="xJDOxSD_R_607_QUERY_CDS.moneda" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="monedaResults" EntityType="xJDOxSD_R_607_QUERY_CDS.monedaResult" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="moneda_bis" EntityType="xJDOxSD_R_607_QUERY_CDS.moneda_bis" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="moneda_bisResults" EntityType="xJDOxSD_R_607_QUERY_CDS.moneda_bisResult" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="AdditionalMetadata" EntityType="xJDOxSD_R_607_QUERY_CDS.ODataQueryAdditionalMetadata" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+            </EntityContainer>
+            <Annotations Target="xJDOxSD_R_607_QUERY_CDS.xJDOxSD_R_607_QUERYType/moneda" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Moneda ( Datos maestros )"/>
+                        <PropertyValue Property="CollectionPath" String="moneda"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="moneda"/>
+                                    <PropertyValue Property="ValueListProperty" String="moneda_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="monedaText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="xJDOxSD_R_607_QUERY_CDS.xJDOxSD_R_607_QUERYType/moneda_bis" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Moneda itbis ( Datos maestros )"/>
+                        <PropertyValue Property="CollectionPath" String="moneda_bis"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="moneda_bis"/>
+                                    <PropertyValue Property="ValueListProperty" String="moneda_bis_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="moneda_bisText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="http://ec2-18-219-205-131.us-east-2.compute.amazonaws.com:8000/sap/opu/odata/jdo/SD_R_607_QUERY_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://ec2-18-219-205-131.us-east-2.compute.amazonaws.com:8000/sap/opu/odata/jdo/SD_R_607_QUERY_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
